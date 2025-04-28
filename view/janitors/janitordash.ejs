@@ -9,13 +9,13 @@
 <body>
     <header>
         <div class="logo2">
-            <img src="../image/ecobin-design (7).png" alt="Logo" />
+            <img src="/image/ecobin-design (7).png" alt="Logo" />
 
         </div>
 
         <div class="icons-head">
             <a href="#" onclick="showNotifications()">
-                <img src="../image/bell-regular-24.png" alt="bell" />
+                <img src="/image/bell-regular-24.png" alt="bell" />
             </a>
             <div class="notification-dropdown" id="notificationDropdown">
                 <div class="notification-header">Notifications</div>
@@ -32,11 +32,11 @@
 
             <div class="profile-container">
                 <a href="#" id="profileIcon">
-                    <img src="../image/user-regular-24.png" alt="profile" />
+                    <img src="/image/user-regular-24.png" alt="profile" />
                 </a>
                 <div id="profileDropdown" class="dropdown-menu">
                     <a href="#">Settings</a>
-                    <a href="../index.html">Logout</a>
+                    <a href="/login">Logout</a>
                 </div>
             </div>
         </div>
@@ -46,9 +46,10 @@
         <div class="floor-no">
             <h3>Floor 5</h3>
             <div class="map-container">
-                <div class="box"><img src="../image/Floor Plan.png" alt="" class="img-map" /></div>
+                <div class="box"><img src="/image/Floor Plan.png" alt="" class="img-map" /></div>
             </div>
 
+           <div class="down">
             <div class="floorstat">
                 <select class="floor-dropdown">
                     <option value="1">Floor 1</option>
@@ -63,31 +64,45 @@
             </div>
 
             <div class="bin-status">
-                <p>Bin 051 <span class="progress yellow" data-progress="78">78%</span></p>
+
+                <div class="first">
+                    <p>Bin 01 <span class="progress red" data-progress="78"></span></p>
+                    <p>78%</p>
+                </div>
+                
                 <div class="progress-bar-container">
                     <div class="progress-bar progress-yellow" style="width: 78%;"></div>
+                   
                 </div>
-
-                <p>Bin 052 <span class="progress green" data-progress="32">32%</span></p>
+                <div class="first">
+                    <p>Bin 02 <span class="progress red" data-progress="32"></span></p>
+                    <p>32%</p>
+                </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar progress-green" style="width: 32%;"></div>
                 </div>
-
-                <p>Bin 053 <span class="progress red" data-progress="100">100%</span></p>
+                <div class="first">
+                    <p>Bin 03 <span class="progress red" data-progress="100"></span></p>
+                    <p>100%</p>
+                </div>
+                
                 <div class="progress-bar-container">
                     <div class="progress-bar progress-red" style="width: 100%;"></div>
                 </div>
             </div>
+           </div>
         </div>
 
         <div class="his-head">
-            <div class="header-title">
-                <h4>Activity Logs</h4>
-            </div>
-
-            <div class="filter">
-                <input type="date" id="dateFilter" />
-                <img src="../image/filter-alt-regular-24 (1).png" alt="filter" id="sortBtn" />
+            <div class="upper-part">
+                <div class="header-title">
+                    <h4>Activity Logs</h4>
+                </div>
+    
+                <div class="filter">
+                    <input type="date" id="dateFilter" />
+                    <img src="/image/filter-alt-regular-24 (1).png" alt="filter" id="sortBtn" />
+                </div>
             </div>
 
             <div class="table-container">
@@ -125,6 +140,6 @@
         </div>
     </div>
 
-    <script src="../js/janitor.js"></script>
+    <script src="/js/janitor.js"></script>
 </body>
 </html>

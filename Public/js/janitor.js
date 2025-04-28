@@ -1,23 +1,29 @@
-document.getElementById("profileIcon").addEventListener("click", function(event) {
-    event.preventDefault();
-    document.getElementById("profileDropdown").classList.toggle("show");
-});
+function showNotifications() {
+    const dropdown = document.getElementById('notificationDropdown');
+    dropdown.classList.toggle('show'); // Toggle a 'show' class to show/hide
+}
 
-window.addEventListener("click", function(event) {
-    const profileDropdown = document.getElementById("profileDropdown");
-    if (!event.target.closest("#profileIcon") && !event.target.closest("#profileDropdown")) {
-        profileDropdown.classList.remove("show");
+// To close notification dropdown when clicking outside (optional)
+window.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('notificationDropdown');
+    const bellIcon = document.querySelector('a[onclick="showNotifications()"]');
+    if (!bellIcon.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.remove('show');
     }
 });
 
-function showNotifications() {
-    const dropdown = document.getElementById("notificationDropdown");
-    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-}
+// Profile dropdown
+const profileIcon = document.getElementById('profileIcon');
+const profileDropdown = document.getElementById('profileDropdown');
 
-document.addEventListener("click", function(event) {
-    const dropdown = document.getElementById("notificationDropdown");
-    if (!event.target.closest("#bellIcon") && !event.target.closest("#notificationDropdown")) {
-        dropdown.style.display = "none";
+profileIcon.addEventListener('click', function(event) {
+    event.preventDefault();
+    profileDropdown.classList.toggle('show');
+});
+
+// Optional: Hide profile dropdown when clicking outside
+window.addEventListener('click', function(event) {
+    if (!profileIcon.contains(event.target) && !profileDropdown.contains(event.target)) {
+        profileDropdown.classList.remove('show');
     }
 });
