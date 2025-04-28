@@ -328,7 +328,17 @@ padding: 10px 20px;
     color: rgb(143, 9, 9);
     font-weight: 500;
 }
-
+.staff-decline-btn{
+    background: rgb(143, 9, 9);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.staff-decline-btn:hover{
+    background: rgb(189, 4, 4);
+}
 
 .staff-request-btn {
     background: #3A7D44;
@@ -426,6 +436,74 @@ input, select {
     display: block;
 }
 
+
+/* overview */
+.content-panel {
+    display: none;
+}
+.content-panel.active {
+    display: block;
+}
+
+  
+  .analytics {
+    max-width: 900px;
+  }
+  
+  .summary-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: left;
+    flex: 1;
+    margin: 0 1s5px;
+  }
+  
+  .card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .card .weight {
+    font-size: 24px;
+    font-weight: bold;
+    color: #14532d;
+  }
+  
+  .toggle-buttons {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .toggle {
+    background: none;
+    border: none;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #666;
+    border-radius: 5px;
+  }
+  
+  .toggle.active {
+    background: #14532d;
+    color: white;
+  }
+  
+  .chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

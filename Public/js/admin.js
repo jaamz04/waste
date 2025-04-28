@@ -66,4 +66,3 @@ function sortTable() {
     rows.forEach(row => table.appendChild(row)); 
 }
 
-document.getElementById("sortBtn").addEventListener("click", sortTable);
