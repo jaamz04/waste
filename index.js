@@ -13,8 +13,8 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(cookieParser());
-app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 app.use(authRouter);
 app.set("view engine", "ejs");
@@ -40,11 +40,11 @@ app.get("/landing", (req, res) => {
 });
 
 app.get("/admin", (req, res) => {
-  res.render("admin/admin"); // Adjusted to reflect the subfolder structure
+  res.render("admin/admin"); 
 });
 
 app.get("/janitordash", (req, res) => {
-  res.render("janitors/janitordash"); // Adjusted to reflect the subfolder structure
+  res.render("janitors/janitordash"); 
 });
 
 app.get('/login', (req, res) => {

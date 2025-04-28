@@ -10,29 +10,21 @@ exports.signup = async (req, res) => {
     const { name, email, password } = req.body; 
 
     try {
-       
         const { error, value } = signupSchema.validate({ name, email, password });
-        if (!name || !email || !password) {
-            return res.status(400).json({ success: false, message: "All fields are required!" });
-        }
-
         if (error) {
-            return res.status(401).json({ success: false, message: error.details[0].message });
+            return res.status(400).json({ success: false, message: error.details[0].message });
         }
 
-        
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ email: value.email });
         if (existingUser) {
-            return res.status(401).json({ success: false, message: "User Already Exists!" });
+            return res.status(409).json({ success: false, message: "User Already Exists!" });
         }
 
-      
-        const hashedPassword = await doHash(password, 12);
-        
+        const hashedPassword = await doHash(value.password, 12);
         
         const newUser = new User({
-            name, 
-            email,
+            name: value.name, 
+            email: value.email,
             password: hashedPassword,
         });
 
@@ -50,6 +42,8 @@ exports.signup = async (req, res) => {
         return res.status(500).json({ success: false, message: "Server error. Please try again later." });
     }
 };
+
+
 
 
 exports.signin = async (req, res) => {
