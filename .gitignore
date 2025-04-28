@@ -5,8 +5,6 @@ node_modules/
 *.log
 logs/
 
-# Environment variables
-.env
 
 # NPM package lock file (optional - you might want to keep it, but ignoring it can help avoid conflicts in some cases)
 package-lock.json
