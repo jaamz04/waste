@@ -20,14 +20,14 @@
       </div>
 
       <div class="icons-head">
-        <a href="#" onclick="showNotifications()">
-          <img src="../image/bell-regular-24.png" alt="bell" />
+        <a href="#" id="bellIcon">
+          <img src="../image/bell-regular-24.png" alt="bell"/>
         </a>
         <div class="notification-dropdown" id="notificationDropdown">
           <div class="notification-header">Notifications</div>
           <ul class="notification-list">
             <li class="notification-item">New message from Admin</li>
-            <li class="notification-item">Samnple Ra ni</li>
+            <li class="notification-item">Sample Ra ni</li>
             <li class="notification-item">Mr. Bin</li>
             <li class="notification-item">System update available</li>
           </ul>
@@ -35,6 +35,8 @@
             <a href="#">View all notifications</a>
           </div>
         </div>
+        
+        
 
         <div class="profile-container">
           <a href="#" id="profileIcon">
@@ -51,10 +53,12 @@
     <div class="container">
       <div class="dashboard-left">
         <div class="tabs">
-          <div class="tab active" onclick="showTab('overview')">Overview</div>
-          <div class="tab" onclick="showTab('staff')">Staff</div>
-          <div class="tab" onclick="showTab('request')">Pending</div>
+          <div class="tab active" id="tabOverview">Overview</div>
+          <div class="tab" id="tabStaff">Staff</div>
+          <div class="tab" id="tabRequest">Pending</div>
         </div>
+        
+        
         <div class="tab-content active" id="overview">
           <div class="left-tab">
             <div class="group">
@@ -491,7 +495,8 @@
         </div>
       </div>
     </div>
-    <script src="/js/main.js"></script>
+
     <script src="/js/staff.js"></script>
+    <script></script>
   </body>
 </html>

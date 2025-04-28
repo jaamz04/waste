@@ -1,13 +1,31 @@
-function showTab(tabId) {
-    document.querySelectorAll(".tab-content").forEach((content) => {
-      content.classList.remove("active");
-    });
-    document.querySelectorAll(".tab").forEach((tab) => {
-      tab.classList.remove("active");
-    });
-    document.getElementById(tabId).classList.add("active");
-    event.target.classList.add("active");
-  }
+document.addEventListener("DOMContentLoaded", function() {
+  // Attach click event listeners to tabs
+  document.getElementById("tabOverview").addEventListener("click", function(event) {
+    showTab('overview', event);
+  });
+  document.getElementById("tabStaff").addEventListener("click", function(event) {
+    showTab('staff', event);
+  });
+  document.getElementById("tabRequest").addEventListener("click", function(event) {
+    showTab('request', event);
+  });
+});
+
+// Function to show the selected tab
+function showTab(tabId, event) {
+  // Remove 'active' class from all tab content and tabs
+  document.querySelectorAll(".tab-content").forEach((content) => {
+    content.classList.remove("active");
+  });
+  document.querySelectorAll(".tab").forEach((tab) => {
+    tab.classList.remove("active");
+  });
+
+  // Add 'active' class to the selected tab and tab content
+  document.getElementById(tabId).classList.add("active");
+  event.target.classList.add("active");
+}
+
   document.querySelectorAll(".table2 td:nth-child(7)").forEach((td) => {
     if (td.textContent.trim() === "Pending") {
       td.style.color = "#E5C33B";
@@ -40,20 +58,26 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// notificaions 
-  function showNotifications() {
-    var dropdown = document.getElementById("notificationDropdown");
-    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-}
+document.addEventListener("DOMContentLoaded", function() {
+  var bellIcon = document.getElementById("bellIcon");
+  bellIcon.addEventListener("click", showNotifications);
 
-document.addEventListener("click", function(event) {
-    var dropdown = document.getElementById("notificationDropdown");
-    var bellIcon = document.querySelector(".bell-icon");
-    
-    if (!dropdown.contains(event.target) && !bellIcon.contains(event.target)) {
-        dropdown.style.display = "none";
-    }
+  // Notifications toggle function
+  function showNotifications() {
+      var dropdown = document.getElementById("notificationDropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  }
+
+  // Close the dropdown if clicked outside
+  document.addEventListener("click", function(event) {
+      var dropdown = document.getElementById("notificationDropdown");
+
+      if (!dropdown.contains(event.target) && !bellIcon.contains(event.target)) {
+          dropdown.style.display = "none";
+      }
+  });
 });
+
 // filkter table
 document.getElementById("dateFilter").addEventListener("input", filterTable);
 let sortAsc = true;
@@ -150,23 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// add staff modal
-document.addEventListener("DOMContentLoaded", function () {
-  const openModalBtn = document.getElementById("openModalBtn");
-  const closeModalBtn = document.getElementById("closeModalBtn");
-  const modal = document.getElementById("staffModal");
-
-  // Open Modal
-  openModalBtn.addEventListener("click", function () {
-    modal.style.display = "flex";
-  });
-
-  // Close Modal
-  closeModalBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-  });
-});
-
 
 // update staff modal
 const updateModal = document.getElementById("updateStaffModal");
@@ -240,6 +247,22 @@ window.addEventListener("click", (event) => {
     deleteModal.style.display = "none";
   }
 });
+// Handle the filter search in staff list
+document.getElementById('binSearch').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  const rows = document.querySelectorAll('.table2 tr');
+  rows.forEach(row => {
+    const nameCell = row.cells[1];
+    if (nameCell) {
+      const name = nameCell.textContent.toLowerCase();
+      if (name.includes(query)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    }
+  });
+});
 
 //   admin
   
@@ -256,7 +279,5 @@ window.addEventListener("click", (event) => {
           document.getElementById(target).classList.add("active");
         });
       });
-
-      
 
       
