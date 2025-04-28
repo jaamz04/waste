@@ -59,21 +59,24 @@ app.get("/forgot_password", (req, res) => {
   res.render("forgot_password"); 
 });
 
-
 app.get("/dashboard", (req, res) => {
-    const token = req.cookies.Authorization;
+  res.render("Staff/dashboard"); 
+});
+
+// app.get("/dashboard", (req, res) => {
+//     const token = req.cookies.Authorization;
   
-    if (!token) {
-      return res.redirect("/login"); 
-    }
+//     if (!token) {
+//       return res.redirect("/login"); 
+//     }
   
-    try {
-      const decoded = jwt.verify(token.split(" ")[1], process.env.TOKEN_SECRET);
-      res.render("staff/dash", { user: decoded });
-    } catch (error) {
-      return res.redirect("/login"); 
-    }
-  });
+//     try {
+//       const decoded = jwt.verify(token.split(" ")[1], process.env.TOKEN_SECRET);
+//       res.render("staff/dash", { user: decoded });
+//     } catch (error) {
+//       return res.redirect("/login"); 
+//     }
+//   });
   
 
 
