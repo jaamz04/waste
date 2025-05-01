@@ -132,7 +132,7 @@ main {
 .filter {
     display: flex;
     align-items: center;
-    margin-right: 90px;
+    margin-right: 190px;
     gap: 10px;
 }
 
@@ -154,17 +154,16 @@ main {
     height: 24px;
     object-fit: contain;
 }
-
-  
 .content-panel {
     display: none;
     animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden; 
 }
+
 
 .content-panel.active {
     display: block;
 }
-
 .content-panel h3 {
     font-size: 20px;
     margin-bottom: -10px;
@@ -447,7 +446,8 @@ input, select {
 
   
   .analytics {
-    max-width: 900px;
+    max-width: 720px;
+    margin-top: -30px;
   }
   
   .summary-cards {
@@ -455,27 +455,33 @@ input, select {
     justify-content: space-between;
     margin-bottom: 20px;
   }
-  
+  .summary-cards p{
+    margin-left: 20px;
+  }
   .card {
-    background: white;
-    padding: 10px;
+    background: rgb(247, 247, 247);
+    padding: 5px;
+    max-width: 300px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     text-align: left;
     flex: 1;
-    margin: 0 15px;
+    margin: 0 10px;
   }
   
   .card h3 {
     margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 15px;
   }
-  
-  .card .weight {
-    font-size: 24px;
+  .weight {
+    font-size: 16px;
     font-weight: bold;
     color: #14532d;
   }
-  
+  .card p{
+    font-size: 12px;
+  }
   .toggle-buttons {
     text-align: right;
     margin-bottom: 10px;
@@ -491,14 +497,56 @@ input, select {
     color: #666;
     border-radius: 5px;
   }
+  .his-head{
+    display: flex;
+    align-items: center;
+    justify-content:space-between !important;
+    padding: 10px;
+    width: 75%;
+}
+.his-head input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.table-container {
+    overflow-x: auto;
+  }
   
+  .table {
+    width: 65%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 0.8rem;
+  }
+  
+  .status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    border: none;
+  }
+  
+  .status.done {
+    background-color: #28a745;
+    color: #fff;
+  }
+
   .toggle.active {
     background: #14532d;
     color: white;
   }
   
   .chart-container {
-    background: white;
+    background: rgb(247, 247, 247);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
