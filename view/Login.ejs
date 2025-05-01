@@ -29,7 +29,7 @@
                 </button>
                 
                 <p class="or">OR LOGIN WITH EMAIL</p>
-                <form id="loginForm" action="/login" method="POST"  >
+                <form id="loginForm" >
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Email">
                     
@@ -40,9 +40,9 @@
                         <label><input type="checkbox"> Keep me logged in</label>
                         <a href="/forgot_password">Forgot Password?</a>
                     </div>
-                    <a href="/dashboard">
+                    
                         <button type="submit" class="login-btn">Log in</button>
-                    </a>
+                    
                   
         
                     <p class="signup">Don't have an account yet? <a href="/register">Sign up</a></p>
@@ -61,5 +61,8 @@
             </div>
         </div>
     </div>
+
+    <script src="/js/login.js"></script>
+
 </body>
 </html>

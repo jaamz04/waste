@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { signupSchema, signinSchema, acceptCodeSchema, changePasswordSchema,acceptFPCodeSchema } = require("../middlewares/validator");
-const User = require('../models/userModel');
+const {User} = require('../models/userModel');
 const { doHash, doHashValidation, hmacProcess } = require('../utils/hashing');
 const transport = require("../middlewares/sendMail");
 const bcrypt = require("bcryptjs");
@@ -22,10 +22,13 @@ exports.signup = async (req, res) => {
 
         const hashedPassword = await doHash(value.password, 12);
         
+        
         const newUser = new User({
             name: value.name, 
             email: value.email,
             password: hashedPassword,
+            u_role: 'janitor',  // Default role as 'janitor'
+            status: 'active'
         });
 
         const result = await newUser.save();
@@ -35,6 +38,7 @@ exports.signup = async (req, res) => {
             success: true,
             message: "Your Account has been Created Successfully!",
             user: result,
+            redirect: "/login"
         });
 
     } catch (error) {
@@ -44,13 +48,11 @@ exports.signup = async (req, res) => {
 };
 
 
-
-
 exports.signin = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const existingUser = await User.findOne({ email }).select("+password");
+        const existingUser = await User.findOne({ email }).select("+password +u_role");
         if (!existingUser) {
             return res.status(401).json({ error: "User does not exist!" });
         }
@@ -61,7 +63,7 @@ exports.signin = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { userId: existingUser._id, email: existingUser.email },
+            { userId: existingUser._id, email: existingUser.email, role: existingUser.u_role },
             process.env.TOKEN_SECRET,
             { expiresIn: "8h" }
         );
@@ -71,7 +73,28 @@ exports.signin = async (req, res) => {
             secure: process.env.NODE_ENV === "production"
         });
 
-        return res.status(200).json({ message: "Login successful!", token });
+       
+        let redirectUrl;
+        switch (existingUser.u_role.toLowerCase()) {
+            case "admin":
+                redirectUrl = "admin/admin";
+                break;
+            case "staff":
+                redirectUrl = "staff/dashboard";
+                break;
+            case "janitor":
+                redirectUrl = "janitors/janitordash";
+                break;
+            default:
+                redirectUrl = "/landing";
+        }
+
+        return res.status(200).json({
+            message: "Login successful!",
+            token,
+            redirectUrl
+        });
+
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Something went wrong." });

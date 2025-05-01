@@ -59,26 +59,15 @@ app.get("/forgot_password", (req, res) => {
   res.render("forgot_password"); 
 });
 
-app.get("/dashboard", (req, res) => {
-  res.render("Staff/dashboard"); 
+app.get("/staff/dashboard", (req, res) => {
+  res.render("staff/dashboard"); 
 });
-
-// app.get("/dashboard", (req, res) => {
-//     const token = req.cookies.Authorization;
-  
-//     if (!token) {
-//       return res.redirect("/login"); 
-//     }
-  
-//     try {
-//       const decoded = jwt.verify(token.split(" ")[1], process.env.TOKEN_SECRET);
-//       res.render("staff/dash", { user: decoded });
-//     } catch (error) {
-//       return res.redirect("/login"); 
-//     }
-//   });
-  
-
+app.get("/janitors/janitordash", (req, res) => {
+  res.render("janitors/janitordash"); 
+});
+app.get("/admin/admin", (req, res) => {
+  res.render("admin/admin"); 
+});
 
 
 app.listen(process.env.PORT, ()=> {

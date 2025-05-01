@@ -11,8 +11,10 @@ router.get('/login', (req, res) => {
     res.render("login"); 
 });
 
+
 router.post('/register', authController.signup);
 router.post('/login', authController.signin);
+
 router.post('/signout', identifier, authController.signout);
 
 router.patch('/send-verification-code',identifier, authController.sendVerificationCode);

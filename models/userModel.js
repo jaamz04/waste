@@ -3,7 +3,13 @@ const mongoose = require('mongoose');
 
 
 const userInfoSchema = new mongoose.Schema({
-    fullname: { type: String, required: true, trim: true },
+    user: { type: mongoose.Schema.Types.ObjectId,
+         ref: 'User',
+         required: true },
+    fullname: { 
+        type: String, 
+        required: true, 
+        trim: true },
     address: { type: String, required: true },
     contact: { type: String, required: true },
     birthdate: { type: Date, required: true },
@@ -16,7 +22,7 @@ const userInfoSchema = new mongoose.Schema({
 const userSchema = mongoose.Schema({
     info: { type: mongoose.Schema.Types.ObjectId,
          ref: 'UserInfo', 
-         required: true 
+         
         },
 
     name: {
