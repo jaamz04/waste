@@ -358,15 +358,18 @@ padding: 10px 20px;
 .content {
     display: flex;
     gap: 30px;
+    margin-top: 60px;
     align-items: flex-start;
 }
 
 .profile-section {
     width: 250px;
     text-align: center;
-    padding-right: 30px;
+    padding-right: 50px;
     border-right: 2px solid #ccc;
-
+}
+.profile-section h3, p{
+    font-size: 15px;
 }
 .profile-section img {
     width: 100px;
@@ -443,6 +446,7 @@ input, select {
 .content-panel {
     display: none;
 }
+
 .content-panel.active {
     display: block;
 }
