@@ -1,15 +1,24 @@
 const jwt = require("jsonwebtoken");
 
+
+
+
 exports.identifier = (req, res, next) => {
     let token;
 
     if (req.headers.client === 'not-browser') {
-        token = req.headers.authorization; 
+        token = req.headers.authorization;
     } else {
         token = req.cookies['Authorization'];
     }
 
     if (!token) {
+        
+        if (req.headers.client !== 'not-browser') {
+            return res.redirect('/landing');
+        }
+
+        
         return res.status(403).json({ success: false, message: "Unauthorized" });
     }
 
@@ -19,13 +28,18 @@ exports.identifier = (req, res, next) => {
 
         if (jwtVerified) {
             req.user = jwtVerified;
-            next(); 
+            return next();
         } else {
-            throw new Error('Error in the token');
+            throw new Error('Invalid token');
         }
 
     } catch (error) {
         console.log(error);
-        res.status(401).json({ success: false, message: "Invalid token" });
+
+        if (req.headers.client !== 'not-browser') {
+            return res.redirect('/landing');
+        }
+
+        return res.status(401).json({ success: false, message: "Invalid token" });
     }
 };

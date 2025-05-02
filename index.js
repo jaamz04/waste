@@ -4,6 +4,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require('mongoose');
 const path = require("path");
+const { identifier } = require("./middlewares/identification");
+
+
 
 const authRouter = require('./routers/authRouter');
 const postsRouter = require('./routers/postsRouter');
@@ -59,8 +62,8 @@ app.get("/forgot_password", (req, res) => {
   res.render("forgot_password"); 
 });
 
-app.get("/staff/dashboard", (req, res) => {
-  res.render("staff/dashboard"); 
+app.get("/staff/dashboard", identifier, (req, res) => {
+  res.render("staff/dashboard");
 });
 app.get("/janitors/janitordash", (req, res) => {
   res.render("janitors/janitordash"); 
