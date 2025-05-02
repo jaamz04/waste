@@ -39,13 +39,13 @@ app.get("/landing", (req, res) => {
     res.render("landing");
 });
 
-app.get("/admin", (req, res) => {
-  res.render("admin/admin"); 
-});
+// app.get("/admin", (req, res) => {
+//   res.render("admin/admin"); 
+// });
 
-app.get("/janitordash", (req, res) => {
-  res.render("janitors/janitordash"); 
-});
+// app.get("/janitordash", (req, res) => {
+//   res.render("janitors/janitordash"); 
+// });
 
 app.get('/login', (req, res) => {
   res.render('login', { errorMessage: null });
@@ -73,3 +73,5 @@ app.get("/admin/admin", (req, res) => {
 app.listen(process.env.PORT, ()=> {
     console.log('listening.....');
 } );
+
+

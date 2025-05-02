@@ -4,6 +4,7 @@ const {User} = require('../models/userModel');
 const { doHash, doHashValidation, hmacProcess } = require('../utils/hashing');
 const transport = require("../middlewares/sendMail");
 const bcrypt = require("bcryptjs");
+const crypto = require('crypto');
 
 
 exports.signup = async (req, res) => {
@@ -48,6 +49,8 @@ exports.signup = async (req, res) => {
 };
 
 
+
+
 exports.signin = async (req, res) => {
     const { email, password } = req.body;
 
@@ -62,8 +65,24 @@ exports.signin = async (req, res) => {
             return res.status(401).json({ error: "Invalid Credentials!" });
         }
 
+        const sessionToken = crypto.randomBytes(64).toString("hex");
+
+        existingUser.sessionToken = sessionToken;
+
+            // Normalize enum fields
+            existingUser.u_role = existingUser.u_role.toLowerCase();
+            existingUser.status = existingUser.status.toLowerCase();
+
+            await existingUser.save();
+
+        // Sign JWT with sessionToken
         const token = jwt.sign(
-            { userId: existingUser._id, email: existingUser.email, role: existingUser.u_role },
+            {
+                userId: existingUser._id,
+                email: existingUser.email,
+                role: existingUser.u_role,
+                sessionToken
+            },
             process.env.TOKEN_SECRET,
             { expiresIn: "8h" }
         );
@@ -73,7 +92,6 @@ exports.signin = async (req, res) => {
             secure: process.env.NODE_ENV === "production"
         });
 
-       
         let redirectUrl;
         switch (existingUser.u_role.toLowerCase()) {
             case "admin":
@@ -102,10 +120,15 @@ exports.signin = async (req, res) => {
 };
 
 
-exports.signout = async (req, res)=>{
-    res.clearCookie('Authirization').status(200).json({success:true, message: "Logged Out Successfully"})
-}
-
+exports.signout = async (req, res) => {
+  
+    res.clearCookie('Authorization', {
+      httpOnly: true,    
+      secure: process.env.NODE_ENV === 'production',  
+      sameSite: 'Strict' 
+    }).status(200).json({ success: true, message: "Logged Out Successfully" });
+  }
+  
 exports.sendVerificationCode = async (req, res)=>{
     const {email}=req.body;
 

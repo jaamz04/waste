@@ -49,15 +49,20 @@ const userSchema = mongoose.Schema({
         select:false,
     },
 
-    u_role: { type: String, 
-        enum: ['admin', 'janitor', 'other'],
-         required: true 
-        },
+    u_role: {
+        type: String,
+        enum: ['admin', 'user', 'staff'], // Added 'staff' as a valid role
+        required: true
+      },
+      status: {
+        type: String,
+        enum: ['inactive', 'active', 'suspended'], // Added 'active' as a valid status
+        required: true
+      },
 
-    status: { type: String, 
-        enum: ['active', 'inactive'], 
-        default: 'active' 
-    },
+    sessionToken: { 
+        type: String, 
+        default: null },
 
     verified:{
         type:Boolean,
