@@ -126,6 +126,7 @@ main {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-left: 100px;
     width: 100%; 
 }
 
@@ -138,9 +139,9 @@ main {
 
 .date-filter {
     padding: 8px;
-    font-size: 14px;
+    font-size: 14px #ccc;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 .filter-btn {
@@ -152,6 +153,7 @@ main {
 .filter-btn img {
     width: 24px;
     height: 24px;
+    color: #e9e9e9;
     object-fit: contain;
 }
 .content-panel {
@@ -172,8 +174,8 @@ main {
 }
 .request {
     text-align: right;
-    margin-right: 70px;
-    margin-bottom: 30px;
+    margin-right: 90px;
+    margin-bottom: 20px;
 }
 
 .status-done{
@@ -187,9 +189,8 @@ padding: 10px 20px;
 .request h4 {
     font-size: 12px;
     font-weight: 100;
-    margin-bottom: -20px;
     color: rgb(179, 13, 13);
-    margin: 0; 
+    margin-top: -5px; 
 }
 
 .table2 {
@@ -233,10 +234,11 @@ padding: 10px 20px;
 .right-head {
     display: flex;
     justify-content: flex-end; 
-    margin-right: 20%;
+    margin-right: 19%;
     margin-top: 5px;
-    margin-bottom: -30px;
+    margin-bottom: -27px;
     gap: 2rem;
+
 }
 
 .search-bin-staff {
@@ -418,6 +420,7 @@ input, select {
 .settings-menu li {
     padding: 10px;
     cursor: pointer;
+    font-size: 12px;
     text-align: left;
 }
 
@@ -556,8 +559,8 @@ input, select {
 
 .container-map{
     position: absolute;
-    top: 20px;
-    right: -20px;
+    top: 45px;
+    right: -50px;
 }
 
 .map-container {
@@ -567,12 +570,13 @@ input, select {
     padding: 0;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 100px;
     margin-top: 50px;
     background: #f4f4f4; 
 }
 .floor-no {
     margin-top: 20px;
+    margin-left: -30px;
   }
 .box {
     height: 100%;
@@ -635,7 +639,7 @@ input, select {
     width: 100%;
 }
 .stat{
-    margin-right: 60px;
+    margin-right: 75px;
     font-size: 13px;
 }
 .progress-bar-container {
