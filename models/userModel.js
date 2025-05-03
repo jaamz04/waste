@@ -131,6 +131,8 @@ const binSchema = new mongoose.Schema({
 
 const historyLogSchema = new mongoose.Schema({
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user_name: { type: String },
+    user_status: { type: String },
     time_in: Date,
     time_out: Date,
     date: Date

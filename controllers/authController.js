@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { signupSchema, signinSchema, acceptCodeSchema, changePasswordSchema,acceptFPCodeSchema } = require("../middlewares/validator");
 const {User} = require('../models/userModel');
+const { HistoryLog } = require('../models/userModel');
 const { doHash, doHashValidation, hmacProcess } = require('../utils/hashing');
 const transport = require("../middlewares/sendMail");
 const bcrypt = require("bcryptjs");
@@ -75,6 +76,14 @@ exports.signin = async (req, res) => {
 
             await existingUser.save();
 
+            await HistoryLog.create({
+                user_id: existingUser._id,
+                user_name: existingUser.name,      
+                user_status: existingUser.status,  
+                date: new Date(),
+                time_in: new Date()
+            });
+
         // Sign JWT with sessionToken
         const token = jwt.sign(
             {
@@ -120,14 +129,40 @@ exports.signin = async (req, res) => {
 };
 
 
+
 exports.signout = async (req, res) => {
-  
+  try {
+    const token = req.cookies.Authorization?.split(' ')[1]; 
+
+    if (!token) {
+      return res.status(400).json({ error: "No token provided" });
+    }
+
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    const userId = decoded.userId;
+
+   
+    await HistoryLog.findOneAndUpdate(
+      {
+        user_id: userId,
+        date: { $gte: new Date().setHours(0, 0, 0, 0), $lte: new Date().setHours(23, 59, 59, 999) }
+      },
+      { time_out: new Date() },
+      { sort: { _id: -1 } }
+    );
+
     res.clearCookie('Authorization', {
-      httpOnly: true,    
-      secure: process.env.NODE_ENV === 'production',  
-      sameSite: 'Strict' 
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict'
     }).status(200).json({ success: true, message: "Logged Out Successfully" });
+
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ error: "Logout failed" });
   }
+};
+
   
 exports.sendVerificationCode = async (req, res)=>{
     const {email}=req.body;
