@@ -66,3 +66,41 @@ function sortTable() {
     rows.forEach(row => table.appendChild(row)); 
 }
 
+function togglePassword(inputId, toggleIcon) {
+    const input = document.getElementById(inputId);
+    const isPassword = input.type === "password";
+    input.type = isPassword ? "text" : "password";
+
+    const eyeOpen = "/image/icons8-eye-24.png";
+    const eyeClosed = "/image/icons8-closed-eye-24.png"; 
+    toggleIcon.querySelector('img').src = isPassword ? eyeClosed : eyeOpen;
+  }
+
+
+  const tabs = document.querySelectorAll('.tab');
+  const notifications = document.querySelectorAll('.notification');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+  
+      const label = tab.textContent.trim().toLowerCase();
+  
+      notifications.forEach(notification => {
+        const type = notification.getAttribute('data-type');
+  
+        if (label === 'view all') {
+          notification.style.display = 'flex';
+        } else if (label === 'mentions' && type === 'mention') {
+          notification.style.display = 'flex';
+        } else if (label === 'request' && type === 'request') {
+          notification.style.display = 'flex';
+        } else {
+          notification.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+
