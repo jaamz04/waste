@@ -435,10 +435,10 @@ header {
     margin-top: 1rem;
     width: 100%;
    
+}.stat {
+    font-size: 16px; /* Adjust to make the text more visible */
 }
-.stat{
-    font-size: 13px;
-}
+
 .progress-bar-container {
     width: 100%;
     height: 8px;
@@ -448,40 +448,40 @@ header {
     margin-top: 10px;
     margin-bottom: 2rem;
 }
-
-  .progress-bar {
+.progress-bar {
     height: 100%;
     width: 0;
     transition: width 0.5s ease-in-out;
 }
 
-
-.progress-yellow {
+.progress-bar.yellow {
     background-color: orange;
 }
 
-.progress-green {
+.progress-bar.green {
     background-color: green;
 }
 
-.progress-red {
+.progress-bar.red {
     background-color: red;
 }
 
-.progress.yellow {
+.progress-text.yellow {
     color: orange;
     font-weight: bold;
 }
 
-.progress.green {
+.progress-text.green {
     color: green;
     font-weight: bold;
 }
 
-.progress.red {
+.progress-text.red {
     color: red;
     font-weight: bold;
 }
+
+
 .button-notif{
     align-items: center;
     display: flex;

@@ -17,7 +17,7 @@ const userInfoSchema = new mongoose.Schema({
     assign_area: { type: String, required: true }
 });
 
-
+ 
 
 const userSchema = mongoose.Schema({
     info: { type: mongoose.Schema.Types.ObjectId,
@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema({
         unique: [true, "Email must be Unique!"],
         minLenght: [5, "Email must have 5 Characters!"],
         lowercase: true,
-    },
+    }, 
     password:{
         type:String,
         required:[true, 'Password is required!'],
@@ -90,10 +90,20 @@ const userSchema = mongoose.Schema({
 });
 
 const sensoredDataSchema = new mongoose.Schema({
-    data_id: { type: String, 
-    required: true },
-    timestamp: Date
-});
+    data_id: { type: String, required: true },
+    timestamp: { type: Date, default: Date.now },
+    height: { type: Number }, 
+    weight: { type: Number }, 
+    type: {
+      type: String,
+      enum: ['biodegradable', 'non-biodegradable', 'foodwaste'],
+      required: true
+    },
+    starting_time: { type: Date },      
+    fullbin_time: { type: Date },        
+    fillLevel: { type: Number },        
+  });
+  
 
 const activityLogSchema = new mongoose.Schema({
     u_id: { type: mongoose.Schema.Types.ObjectId, 
