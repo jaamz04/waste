@@ -370,15 +370,26 @@ padding: 10px 20px;
     padding-right: 50px;
     border-right: 2px solid #ccc;
 }
-.profile-section h3, p{
+
+.profile-section h3{
     font-size: 15px;
+    margin: 5px 0;
 }
+
+.profile-section p{
+    font-size: 12px;
+    margin-top: -5px;
+}
+
 .profile-section img {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    margin-left: 10px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
 }
+
 .form-section {
     flex-grow: 1;
     background-color: #f4f4f4;
@@ -446,7 +457,7 @@ input, select {
 }
 
 .half-width:last-child {
-    padding-right: 0; /* Avoids extra space on the far right */
+    padding-right: 0
 }
 
 .gender-options {
@@ -495,6 +506,7 @@ input, select {
     border: none;
     color: #000000;
     position: absolute;
+    font-size: 11px;
     top: 95px;
     right: 225px;
     cursor: pointer;
@@ -533,6 +545,7 @@ input, select {
   
   .time {
     font-size: 12px;
+    margin-left: 5px;
     color: #888;
   }
   .meta {
@@ -606,8 +619,11 @@ input, select {
 .settings-menu li {
     padding: 10px;
     cursor: pointer;
+    margin-left: 40px;
+    width: 70%;
     font-size: 13px;
     text-align: left;
+    justify-content: center;
 }
 
 .settings-menu li.active {
