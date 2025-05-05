@@ -497,6 +497,76 @@ header {
     cursor: pointer;
     
 }
+/* Bins */
+.bin-layout {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .content-left {
+    flex: 1;
+    min-width: 400px;
+  }
+  
+  .content-right {
+    flex: 1;
+    min-width: 200px;
+    margin-left: 50px;
+  }
+  .content-right h3{
+    margin-top: -25px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .floorstat1{
+    margin-top: -45px;
+  }
+  
+ .bin-info {
+    font-weight: bold;
+    margin-top: -20px;
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .floor-dropdown {
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .content-left img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bin-info-card {
+    display: flex;
+    margin-top: -5px;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    gap: 10px;
+    border: solid;
+  }
+  
+  .bin-info-card i {
+    font-size: 24px;
+    color: #333;
+    margin-top: 5px;
+  }
+  
 
 /* staff tab */
 .head-staff{

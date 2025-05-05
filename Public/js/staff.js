@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("tabRequest").addEventListener("click", function(event) {
     showTab('request', event);
   });
+  document.getElementById("tabBin").addEventListener("click", function(event) {
+    showTab('Bin', event);
+  });
 });
 
 // Function to show the selected tab

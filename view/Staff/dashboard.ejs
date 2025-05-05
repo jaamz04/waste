@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="../css/staff.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"/>
   </head>
   <body>
     <header>
@@ -54,6 +52,7 @@
       <div class="dashboard-left">
         <div class="tabs">
           <div class="tab active" id="tabOverview">Overview</div>
+          <div class="tab" id="tabBin">Bins</div>
           <div class="tab" id="tabStaff">Staff</div>
           <div class="tab" id="tabRequest">Pending</div>
         </div>
@@ -201,12 +200,80 @@
             </div>
           </div>
         </div>
+
+        <div class="tab-content" id="Bin">
+          <div class="bin-layout">
+            <!-- Left: Floor Plan -->
+            <div class="content-left">
+              <div class="header">
+                <p class="bin-info">Bin Information</p>
+                <div class="floorstat1">
+                  <select class="floor-dropdown">
+                    <option value="1">Floor 1</option>
+                    <option value="2">Floor 2</option>
+                    <option value="3">Floor 3</option>
+                    <option value="4">Floor 4</option>
+                    <option value="5">Floor 5</option>
+                    <option value="6">Floor 6</option>
+                  </select>
+                </div>
+              </div>
+              <img src="/image/Floor Plan.png" alt="Floor Plan">
+            </div>
+        
+            <!-- Right: Bin Information -->
+            <div class="content-right">
+              <h3>Floor 1</h3>
+              <div class="bin-info-card">
+                <i class="bx bx-trash"></i>
+                <div>
+                  <strong>S1Bin1</strong><br>
+                  Bin Type: Biodegradable<br>
+                  Bin Height: 24%<br>
+                  Bin Average: 100%<br>
+                  Bin Weight: 100%<br>
+                  Starting Time: 8:00 AM<br>
+                  End Time: 5:00 PM
+                </div>
+              </div>
+        
+              <div class="bin-info-card">
+                <i class="bx bx-trash"></i>
+                <div>
+                  <strong>S1Bin2</strong><br>
+                  Bin Type: Non-Biodegradable<br>
+                  Bin Height: 24%<br>
+                  Bin Average: 100%<br>
+                  Bin Weight: 100%<br>
+                  Starting Time: 8:00 AM<br>
+                  End Time: 5:00 PM
+                </div>
+              </div>
+        
+              <div class="bin-info-card">
+                <i class="bx bx-trash"></i>
+                <div>
+                  <strong>S1Bin3</strong><br>
+                  Bin Type: Recyclable<br>
+                  Bin Height: 24%<br>
+                  Bin Average: 100%<br>
+                  Bin Weight: 100%<br>
+                  Starting Time: 8:00 AM<br>
+                  End Time: 5:00 PM
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
         <div class="tab-content" id="request">
           <div class="head-staff">
             <h3>Staff Information</h3>
             <div class="right-head">
               <div class="search-bin-staff">
-                <input type="text" id="binSearch" placeholder="Search" class="search-bar2" />
+                <input type="text" id="binSearch" placeholder="Search" class="search-bar2"/>
               </div>
               <div class="filter">
                 <p id="sortBtn">Sort By</p>
