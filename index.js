@@ -4,8 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require('mongoose');
 const path = require("path");
-const http = require('http');
-const socketIo = require('socket.io');
+// const http = require('http');
+// const socketIo = require('socket.io');
 const app = express();
 
 
@@ -13,8 +13,8 @@ const { identifier } = require("./middlewares/identification");
 const authRouter = require('./routers/authRouter');
 const postsRouter = require('./routers/postsRouter');
 const {SensoredData} = require('./models/userModel'); 
-const server = http.createServer(app);
-const io = socketIo(server);
+// const server = http.createServer(app);
+// const io = socketIo(server);
 
 
 app.use(cors());
@@ -71,29 +71,29 @@ app.get("/admin/admin", (req, res) => {
 
 //socketni
 
-io.on('connection', (socket) => {
-  console.log('New client connected');
+// io.on('connection', (socket) => {
+//   console.log('New client connected');
   
   
-  SensoredData.find({})
-    .then((data) => {
-      socket.emit('initialData', data);  
-    })
-    .catch((err) => console.error(err));
+//   SensoredData.find({})
+//     .then((data) => {
+//       socket.emit('initialData', data);  
+//     })
+//     .catch((err) => console.error(err));
 
   
-  setInterval(() => {
-    SensoredData.find({})
-      .then((data) => {
-        socket.emit('sensorUpdate', data);  
-      })
-      .catch((err) => console.error(err));
-  }, 5000); 
+//   setInterval(() => {
+//     SensoredData.find({})
+//       .then((data) => {
+//         socket.emit('sensorUpdate', data);  
+//       })
+//       .catch((err) => console.error(err));
+//   }, 5000); 
 
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
-  });
-});
+//   socket.on('disconnect', () => {
+//     console.log('Client disconnected');
+//   });
+// });
 
 
 
