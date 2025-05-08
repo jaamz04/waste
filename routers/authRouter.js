@@ -12,6 +12,8 @@ router.get('/login', (req, res) => {
 });
 
 
+
+
 router.post('/register', authController.signup);
 router.post('/login', authController.signin);
 

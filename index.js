@@ -27,7 +27,7 @@ app.use(authRouter);
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/view");
 app.use(express.static("public"));
-
+// app.use('/', staffRouter);
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log("Database connected");
@@ -36,6 +36,7 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 })
 app.use( '/api/auth',authRouter)
 app.use('/api/posts',postsRouter)
+
 
 
 app.get("/", (req, res) => {
@@ -62,6 +63,10 @@ app.get("/forgot_password", (req, res) => {
 app.get("/staff/dashboard", identifier, (req, res) => {
   res.render("staff/dashboard");
 });
+app.get("/staff/profile-staff", (req, res) => {
+  res.render("staff/profile-staff");
+});
+
 app.get("/janitors/janitordash", (req, res) => {
   res.render("janitors/janitordash"); 
 });
