@@ -11,7 +11,7 @@
       <div class="sidebar">
         <button class="sidebar-btn active" data-tab="account">Account Settings</button>
         <button class="sidebar-btn" data-tab="notification">Notification</button>
-        <button class="sidebar-btn" data-tab="security">Change Password</button>
+        <button class="sidebar-btn" data-tab="change-password">Change Password</button>
       </div>
 
       <div class="tab-content">
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Notification Tab -->
-        <div class="tab-pane1" id="notification">
+        <div class="tab-pane" id="notification">
           <h2>Your Notifications</h2>
           <div class="header">
             <button class="mark-read"><img src="/image/icons8-read-30.png" alt="" />Mark all as read</button>
@@ -129,10 +129,10 @@
         </div>
 
         <!-- Security Tab -->
-        <div class="tab-pane" id="security">
-          <h3>Password Setting</h3>
+        <div id="change-password" class="form-section1 tab-pane">
+          <h2>Change Password</h2>
           <form>
-            <div class="form-group password-group">
+            <div class="form-group1 password-group">
               <label>Current Password</label>
               <div class="password-wrapper">
                 <input type="password" id="current-password" />
@@ -141,8 +141,8 @@
                 </span>
               </div>
             </div>
-
-            <div class="form-group password-group">
+          
+            <div class="form-group1 password-group">
               <label>New Password</label>
               <div class="password-wrapper">
                 <input type="password" id="new-password" />
@@ -151,8 +151,8 @@
                 </span>
               </div>
             </div>
-
-            <div class="form-group password-group">
+          
+            <div class="form-group1 password-group">
               <label>Confirm New Password</label>
               <div class="password-wrapper">
                 <input type="password" id="confirm-password" />
@@ -161,10 +161,11 @@
                 </span>
               </div>
             </div>
-
+          
             <button class="update-btn1">Save Changes</button>
           </form>
         </div>
+
       </div>
     </div>
 
